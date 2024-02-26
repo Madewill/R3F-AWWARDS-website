@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter&display=swap");
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* TRACK */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.23);
+}
+
+/* HANDLE */
+::-webkit-scrollbar-thumb {
+  background: white;
+  height: 10%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.overlay--disable {
+  pointer-events: none;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: white;
+  transition: opacity 2s ease-in-out;
+}
+
+.loader--disappear {
+  opacity: 0;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.logo {
+  font-family: "DM Serif Display", serif;
+  color: white;
+  font-size: 8rem;
+  letter-spacing: 0.5rem;
+  padding: 0;
+  margin: 0;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50vh;
+  animation: fadeUp 2.4s ease-in-out;
+  transition: all 2s ease-in-out;
+}
+
+.intro--disappear .logo {
+  top: 42px;
+  transform: scale(0.25);
+  transform-origin: center top;
+}
+
+.spinner {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin-right: -42px;
+  margin-top: -42px;
+  animation: fadeIn 2.4s ease-in-out 1.2s forwards;
+  opacity: 0;
+}
+
+.spinner__image {
+  width: 164px;
+  height: 164px;
+  background-size: contain;
+  background-image: url("/images/wawa.svg");
+  animation: rotate 10s linear infinite;
+}
+
+.intro--disappear .spinner {
+  opacity: 1;
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+.intro__scroll {
+  opacity: 0;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  position: absolute;
+  top: 24vh;
+}
+
+.intro--disappear .intro__scroll {
+  animation: fadeIn 1s ease-in-out 1.5s forwards;
+}
+
+.overlay--scrolled .intro__scroll {
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+.explore {
+  padding: 1rem 2rem;
+  border: none;
+  font-family: "DM Serif Display", serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.25rem;
+  color: #3535cc;
+  border-radius: 32px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 320px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.42s ease-in-out;
+  animation: fadeIn 2.4s ease-in-out 2s forwards;
+  opacity: 0;
+}
+
+.explore:hover {
+  color: white;
+}
+
+.explore:hover:before {
+  width: 200%;
+  height: 300%;
+  border-radius: 100%;
+}
+
+.explore:before {
+  content: "";
+  background: #3535cc;
+  position: absolute;
+  width: 0%;
+  bottom: 0;
+  left: 50%;
+  height: 0%;
+  transition: 0.42s ease-in-out;
+  z-index: -1;
+  transform: translateX(-50%) translateY(50%);
+}
+
+.intro--disappear .explore {
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+.outro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 4s ease-in-out;
+}
+
+.outro--appear {
+  opacity: 1;
+}
+
+.outro__text {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 3rem;
+    letter-spacing: 0.25rem;
+  }
+
+  .intro--disappear .logo {
+    top: 24px;
+    transform: scale(0.5);
+    transform-origin: center top;
+  }
+
+  .spinner__image {
+    width: 82px;
+    height: 82px;
+  }
+
+  .outro__text {
+    font-size: 1rem;
+  }
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+    filter: blur(9px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
