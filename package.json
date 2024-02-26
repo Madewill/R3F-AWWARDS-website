@@ -2,6 +2,7 @@
   "name": "r3f-loading-animations",
   "private": true,
   "version": "0.0.0",
+  "description": "A brief description of your project",
   "type": "module",
   "scripts": {
     "dev": "vite",
